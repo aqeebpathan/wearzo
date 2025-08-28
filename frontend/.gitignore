@@ -1,0 +1,23 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+.vite/
+
+# Environment variables
+.env
+*.local
+
+# Logs
+*.log
+
+# Editor config
+.vscode/
+!.vscode/extensions.json
+.idea/
+.DS_Store
+
+# System / misc
+*.swp
+*.swo
