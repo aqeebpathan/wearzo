@@ -1,5 +1,8 @@
 import ProductForm from "./ProductForm"
-import { ProductFormOutput } from "../schemas/createProduct.schema"
+import {
+  ProductFormInput,
+  ProductFormOutput,
+} from "../schemas/createProduct.schema"
 import { Product } from "../types/product.types"
 import useUpdateProductMutation from "../hooks/useUpdateProductMutation"
 
@@ -10,17 +13,15 @@ const transformFormData = (data: ProductFormOutput) => ({
   tags: data.tags.split(",").map((t) => t.trim()),
 })
 
-const mapProductToFormData = (product: Product): ProductFormOutput => ({
+const mapProductToFormData = (product: Product): ProductFormInput => ({
   ...product,
   sizes: (product.sizes ?? []).join(", "),
   colors: (product.colors ?? []).join(", "),
   tags: (product.tags ?? []).join(", "),
-  isFeatured: product.isFeatured ? true : false,
-  isPublished: product.isPublished ? true : false,
+  isFeatured: product.isFeatured ? "true" : "false",
+  isPublished: product.isPublished ? "true" : "false",
   gender: product.gender as "men" | "women" | "unisex",
-  productImages: (product.images ?? []).map(
-    (img) => img.url,
-  ) as unknown as File[],
+  productImages: [],
 })
 
 const UpdateProductForm = ({ product }: { product: Product }) => {
@@ -32,9 +33,7 @@ const UpdateProductForm = ({ product }: { product: Product }) => {
 
   return (
     <ProductForm
-      initialValues={
-        mapProductToFormData(product) as Partial<ProductFormOutput>
-      }
+      initialValues={mapProductToFormData(product)}
       onSubmit={handleUpdate}
       submitButtonLabel="Update Product"
       loading={isPending}
