@@ -19,10 +19,10 @@ configDotenv();
 
 const app = express();
 
+app.use(cookieParser());
 app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
 app.use(express.json());
-app.use(cookieParser());
 
 // Connect to DB before processing requests
 app.use(async (req, res, next) => {
