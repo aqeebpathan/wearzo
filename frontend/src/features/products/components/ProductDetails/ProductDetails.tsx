@@ -40,7 +40,7 @@ const ProductDetails = ({ product }: { product: Product }) => {
     <section className="mt-6">
       <div className="mb-12 flex flex-col gap-12 md:flex-row md:items-start md:gap-0">
         {/* Product images */}
-        <div className="flex flex-1/2 gap-4 overflow-x-auto sm:grid sm:grid-cols-2">
+        <div className="scrollbar-hidden flex max-w-[100dvw] flex-1/2 gap-4 overflow-x-auto sm:grid sm:grid-cols-2">
           <ProductImages images={product.images} />
         </div>
 
