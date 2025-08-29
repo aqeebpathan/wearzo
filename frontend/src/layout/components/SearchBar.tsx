@@ -5,10 +5,13 @@ import { AnimatePresence, motion } from "framer-motion"
 import CloseIcon from "@/assets/icons/close.svg?react"
 import SearchIcon from "@/assets/icons/search.svg?react"
 
-const SearchBar = () => {
+interface SearchBarProps {
+  open?: boolean
+}
+const SearchBar = ({ open = false }: SearchBarProps) => {
   const navigate = useNavigate()
   const [searchTerm, setSearchTerm] = useState<string>("")
-  const [openSearch, setOpenSearch] = useState<boolean>(false)
+  const [openSearch, setOpenSearch] = useState<boolean>(open)
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
