@@ -56,27 +56,33 @@ const OrderCard = ({ order }: { order: Order }) => {
       </div>
 
       <div className="mt-4 flex flex-col space-y-1 border-t border-neutral-400">
-        <div className="mt-4 grid grid-cols-[10rem_1fr]">
-          <span className="text-sm text-neutral-600">Status:</span>
-          <span className="text-sm">{STATUS_LABELS[status]}</span>
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1">
+          <span className="min-w-[9rem] text-sm text-neutral-600">Status:</span>
+          <span className="flex-1 text-sm break-words">
+            {STATUS_LABELS[status]}
+          </span>
         </div>
-        <div className="grid grid-cols-[10rem_1fr]">
-          <span className="text-sm text-neutral-600">
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
+          <span className="min-w-[9rem] text-sm text-neutral-600">
             {isDelivered ? "Delivered at" : "Date of delivery"}
           </span>
-          <span className="text-sm">
+          <span className="flex-1 text-sm break-words">
             {isDelivered
               ? formatEstimatedArrival(deliveredAt)
               : formatDate(estimatedArrival)}
           </span>
         </div>
-        <div className="grid grid-cols-[10rem_1fr]">
-          <span className="text-sm text-neutral-600">Delivered to:</span>
-          <span className="text-sm">{shippingAddress.address}</span>
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
+          <span className="min-w-[9rem] text-sm text-neutral-600">
+            Delivered to:
+          </span>
+          <span className="flex-1 text-sm break-words">
+            {shippingAddress.address}
+          </span>
         </div>
-        <div className="grid grid-cols-[10rem_1fr] font-semibold">
-          <span className="text-sm">Total:</span>
-          <span className="text-sm">
+        <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 font-semibold">
+          <span className="min-w-[9rem] text-sm">Total:</span>
+          <span className="flex-1 text-sm break-words">
             USD {totalPrice.toString().replace(".", ",")}
           </span>
         </div>
